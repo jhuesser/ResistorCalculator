@@ -1,6 +1,9 @@
 ﻿Public Class frmMain
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        '''''
+        ' COLOR CODE CALCULATING
+        '''''
 
         'Colors of first ring
         Dim color1(8) As String
@@ -32,8 +35,19 @@
 
         'Enables or Disables the 5th dropdown
         EnableDisable5()
+        '                   '''''''
+        ' COLOR CODE CALCULATING ''
+        '                   '''''''
+
+
+
+
 
     End Sub
+
+    '''''
+    ' COLOR CODE CALCULATING
+    '''''
 
     Private Sub chkRing5_CheckedChanged(sender As Object, e As EventArgs) Handles chkRing5.CheckedChanged
 
@@ -416,5 +430,46 @@
 
     End Function
 
+
+
+    '                   '''''''
+    ' COLOR CODE CALCULATING ''
+    '                   '''''''
+
+    Private Sub btnDoubleCalc_Click(sender As Object, e As EventArgs) Handles btnDoubleCalc.Click
+        Dim r As Single
+        r = uri()
+        getColorCode(r)
+
+    End Sub
+
+    Private Function uri()
+        Dim u As Single = txtVolt.Text
+        Dim i As Single = txtAmpere.Text
+        Dim r As Single
+
+        r = u / i
+        txtOhmCalc.Text = r
+
+        Return r
+
+    End Function
+
+    Private Function getColorCode(ohm As String)
+        Dim ohmcalc() As Char = ohm.ToCharArray
+        Dim ohmlength As Byte
+
+        ohmlength = ohmcalc.Length
+
+        For Each ohmnbr In ohmcalc
+            ' Get numbers
+
+        Next
+
+        MsgBox(ohmlength
+               )
+
+
+    End Function
 
 End Class
