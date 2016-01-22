@@ -6,7 +6,7 @@ This should be a universal tool for all you calculation with resistors.
 Currently it can calculate how much Ohm a resistor has.
 You can calculate the Value from the color code, no matter if it has 4 or 5 rings.
 
-[Imgur](http://i.imgur.com/6cJYVKX.png)
+![Screenshot](http://i.imgur.com/6cJYVKX.png)
 
 
 #ToDo
