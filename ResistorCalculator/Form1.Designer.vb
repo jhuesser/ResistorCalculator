@@ -283,6 +283,7 @@ Partial Class frmMain
         '
         Me.txtOhmCalc.Location = New System.Drawing.Point(575, 145)
         Me.txtOhmCalc.Name = "txtOhmCalc"
+        Me.txtOhmCalc.ReadOnly = True
         Me.txtOhmCalc.Size = New System.Drawing.Size(167, 20)
         Me.txtOhmCalc.TabIndex = 24
         '
@@ -290,6 +291,7 @@ Partial Class frmMain
         '
         Me.txtColorCode.Location = New System.Drawing.Point(575, 185)
         Me.txtColorCode.Name = "txtColorCode"
+        Me.txtColorCode.ReadOnly = True
         Me.txtColorCode.Size = New System.Drawing.Size(167, 20)
         Me.txtColorCode.TabIndex = 25
         '

@@ -1,5 +1,19 @@
 ﻿Public Class frmMain
+
+    Public Structure calcCode
+        Public color1 As String
+        Public color2 As String
+        Public color3 As String
+        Public color4 As String
+        Public color5 As String
+
+    End Structure
+
+
     Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+
 
         '''''
         ' COLOR CODE CALCULATING
@@ -439,7 +453,7 @@
     Private Sub btnDoubleCalc_Click(sender As Object, e As EventArgs) Handles btnDoubleCalc.Click
         Dim r As Single
         r = uri()
-        getColorCode(r)
+        txtColorCode.Text = getColorCode(r)
 
     End Sub
 
@@ -455,21 +469,175 @@
 
     End Function
 
-    Private Function getColorCode(ohm As String)
-        Dim ohmcalc() As Char = ohm.ToCharArray
-        Dim ohmlength As Byte
+    Private Function getColorCode(strOhm As String)
 
-        ohmlength = ohmcalc.Length
+        Dim colorcode As String
 
-        For Each ohmnbr In ohmcalc
-            ' Get numbers
 
-        Next
 
-        MsgBox(ohmlength
-               )
+        Dim floatComma As Boolean
+
+        If strOhm.Contains(",") Then
+            floatComma = True
+
+        Else
+            floatComma = False
+        End If
+
+
+
+
+
+
+        If floatComma = True Then
+            colorcode = getFloatCommaCode(strOhm)
+        Else
+            colorcode = getNormalColorCode(strOhm)
+        End If
+
+        Return colorcode
 
 
     End Function
+
+    Function getFloatCommaCode(strOhm As String)
+        Dim ohmNumbers As Byte = strOhm.Length
+    End Function
+
+
+    Function getNormalColorCode(strOhm As String)
+        Dim ohmNumbers As Byte = strOhm.Length
+
+        Dim FourRings As Boolean
+        Dim notNull As Integer
+        Dim colorCode As String
+
+        Dim colors As calcCode
+
+        Dim intZeros As Integer
+        intZeros = countChar(strOhm, "0")
+
+        notNull = ohmNumbers - intZeros
+
+        If notNull = 2 Then
+            FourRings = True
+        ElseIf notNull = 3 Then
+            FourRings = False
+        ElseIf notNull < 2 Then
+            'We have a problem here
+        End If
+
+        If FourRings = True Then
+            colors = calcCode4(strOhm, intZeros)
+
+            colorCode = colors.color1 & " " & colors.color2 & " " & colors.color3 & " " & colors.color4
+        End If
+
+
+
+
+        Return colorCode
+
+    End Function
+
+    Function calcCode4(strOhm As String, intZeros As Integer)
+
+        Dim colors As calcCode
+
+        Dim digit1 As Char = strOhm(0)
+        Dim digit2 As Char = strOhm(1)
+
+
+
+        Select Case digit1
+            Case "1"
+                colors.color1 = "brown"
+            Case "2"
+                colors.color1 = "red"
+            Case "3"
+                colors.color1 = "orange"
+            Case "4"
+                colors.color1 = "yellow"
+            Case "5"
+                colors.color1 = "green"
+            Case "6"
+                colors.color1 = "blue"
+            Case "7"
+                colors.color1 = "pruple"
+            Case "8"
+                colors.color1 = "grey"
+            Case "9"
+                colors.color1 = "white"
+        End Select
+
+        Select Case digit2
+            Case "0"
+                colors.color2 = "black"
+            Case "1"
+                colors.color2 = "brown"
+            Case "2"
+                colors.color2 = "red"
+            Case "3"
+                colors.color2 = "orange"
+            Case "4"
+                colors.color2 = "yellow"
+            Case "5"
+                colors.color2 = "green"
+            Case "6"
+                colors.color2 = "blue"
+            Case "7"
+                colors.color2 = "pruple"
+            Case "8"
+                colors.color2 = "grey"
+            Case "9"
+                colors.color2 = "white"
+        End Select
+
+        Select Case intZeros
+            Case 0
+                colors.color3 = "black"
+            Case 1
+                colors.color3 = "brown"
+            Case 2
+                colors.color3 = "red"
+            Case 3
+                colors.color3 = "orange"
+            Case 4
+                colors.color3 = "yellow"
+            Case 5
+                colors.color3 = "green"
+            Case 6
+                colors.color3 = "blue"
+            Case 7
+                colors.color3 = "pruple"
+            Case 8
+                colors.color3 = "grey"
+            Case 9
+                colors.color3 = "white"
+        End Select
+
+
+
+
+
+        Return colors
+
+    End Function
+
+
+    Public Function countChar(strOhm As String, character As Char)
+        Dim cnt As Integer = 0
+
+        For Each c As Char In strOhm
+            If c = character Then cnt += 1
+
+        Next
+
+        Return cnt
+
+
+    End Function
+
+
 
 End Class
