@@ -1,6 +1,9 @@
 # ResistorCalculator
 This should be a universal tool for all you calculation with resistors.
 
+[![Code Climate](https://codeclimate.com/github/jhuesser/ResistorCalculator/badges/gpa.svg)](https://codeclimate.com/github/jhuesser/ResistorCalculator)
+[![Issue Count](https://codeclimate.com/github/jhuesser/ResistorCalculator/badges/issue_count.svg)](https://codeclimate.com/github/jhuesser/ResistorCalculator)
+
 #Features
 
 Currently it can calculate how much Ohm a resistor has.
